@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1,
+        "name": "Venture Sling 6L",
+        "price": 129,
+        "colors": ["black", "navy", "green", "brown"],
+        "images": {
+            "black": "images/venture_sling_black.jpg",
+            "navy": "images/venture_sling_navy.jpg",
+            "green": "images/venture_sling_green.jpg",
+            "brown": "images/venture_sling_brown.jpg"
+        },
+        "description": "6L / An organized sling that’s ready for adventure"
+    },
+    {
+        "id": 2,
+        "name": "Tech Kit",
+        "price": 59,
+        "colors": ["black", "gray", "blue", "tan"],
+        "images": {
+            "black": "images/tech_kit_black.jpg",
+            "gray": "images/tech_kit_gray.jpg",
+            "blue": "images/tech_kit_blue.jpg",
+            "tan": "images/tech_kit_tan.jpg"
+        },
+        "description": "Charger, mouse, powerbank, dongles, cables, earbuds"
+    }
+]
