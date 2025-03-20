@@ -6125,10 +6125,11 @@ var $elm$http$Http$get = function (r) {
 		{body: $elm$http$Http$emptyBody, expect: r.expect, headers: _List_Nil, method: 'GET', timeout: $elm$core$Maybe$Nothing, tracker: $elm$core$Maybe$Nothing, url: r.url});
 };
 var $elm$json$Json$Decode$list = _Json_decodeList;
-var $author$project$Main$Product = F6(
-	function (id, name, price, colors, selectedColor, showInsideView) {
-		return {colors: colors, id: id, name: name, price: price, selectedColor: selectedColor, showInsideView: showInsideView};
+var $author$project$Main$Product = F8(
+	function (id, name, price, colors, selectedColor, showInsideView, isValuePack, description) {
+		return {colors: colors, description: description, id: id, isValuePack: isValuePack, name: name, price: price, selectedColor: selectedColor, showInsideView: showInsideView};
 	});
+var $elm$json$Json$Decode$bool = _Json_decodeBool;
 var $author$project$Main$ColorOption = F3(
 	function (colorCode, outsideImageUrl, insideImageUrl) {
 		return {colorCode: colorCode, insideImageUrl: insideImageUrl, outsideImageUrl: outsideImageUrl};
@@ -6143,9 +6144,27 @@ var $author$project$Main$colorOptionDecoder = A4(
 	A2($elm$json$Json$Decode$field, 'outsideImageUrl', $elm$json$Json$Decode$string),
 	A2($elm$json$Json$Decode$field, 'insideImageUrl', $elm$json$Json$Decode$string));
 var $elm$json$Json$Decode$int = _Json_decodeInt;
-var $elm$json$Json$Decode$map6 = _Json_map6;
-var $author$project$Main$productDecoder = A7(
-	$elm$json$Json$Decode$map6,
+var $elm$json$Json$Decode$map8 = _Json_map8;
+var $elm$json$Json$Decode$oneOf = _Json_oneOf;
+var $elm$json$Json$Decode$maybe = function (decoder) {
+	return $elm$json$Json$Decode$oneOf(
+		_List_fromArray(
+			[
+				A2($elm$json$Json$Decode$map, $elm$core$Maybe$Just, decoder),
+				$elm$json$Json$Decode$succeed($elm$core$Maybe$Nothing)
+			]));
+};
+var $elm$core$Maybe$withDefault = F2(
+	function (_default, maybe) {
+		if (maybe.$ === 'Just') {
+			var value = maybe.a;
+			return value;
+		} else {
+			return _default;
+		}
+	});
+var $author$project$Main$productDecoder = A9(
+	$elm$json$Json$Decode$map8,
 	$author$project$Main$Product,
 	A2($elm$json$Json$Decode$field, 'id', $elm$json$Json$Decode$int),
 	A2($elm$json$Json$Decode$field, 'name', $elm$json$Json$Decode$string),
@@ -6156,7 +6175,21 @@ var $author$project$Main$productDecoder = A7(
 		$elm$json$Json$Decode$list($author$project$Main$colorOptionDecoder)),
 	$elm$json$Json$Decode$succeed(
 		{colorCode: '#FFFFFF', insideImageUrl: '', outsideImageUrl: ''}),
-	$elm$json$Json$Decode$succeed(false));
+	$elm$json$Json$Decode$succeed(false),
+	A2(
+		$elm$json$Json$Decode$map,
+		$elm$core$Maybe$withDefault(false),
+		A2(
+			$elm$json$Json$Decode$field,
+			'isValuePack',
+			$elm$json$Json$Decode$maybe($elm$json$Json$Decode$bool))),
+	A2(
+		$elm$json$Json$Decode$map,
+		$elm$core$Maybe$withDefault(''),
+		A2(
+			$elm$json$Json$Decode$field,
+			'description',
+			$elm$json$Json$Decode$maybe($elm$json$Json$Decode$string))));
 var $author$project$Main$productsDecoder = $elm$json$Json$Decode$list($author$project$Main$productDecoder);
 var $author$project$Main$fetchProducts = $elm$http$Http$get(
 	{
@@ -6469,7 +6502,16 @@ var $author$project$Main$viewProduct = function (product) {
 						$elm$html$Html$Attributes$class('product-image')
 					]),
 				_List_Nil),
-				A2(
+				product.isValuePack ? A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('value-pack-button')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Value Pack')
+					])) : A2(
 				$elm$html$Html$div,
 				_List_fromArray(
 					[
@@ -6527,7 +6569,17 @@ var $author$project$Main$viewProduct = function (product) {
 								]),
 							_List_Nil);
 					},
-					product.colors))
+					product.colors)),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('product-description')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text(product.description)
+					]))
 			]));
 };
 var $author$project$Main$view = function (model) {

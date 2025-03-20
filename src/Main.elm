@@ -5,7 +5,7 @@ import Html exposing (Html, div, img, button, text)
 import Html.Attributes exposing (src, class, style)
 import Html.Events exposing (onClick)
 import Http
-import Json.Decode exposing (Decoder, field, int, list, string, map3, map6)
+import Json.Decode exposing (Decoder, field, int, list, string, bool, maybe, map3, map8)
 
 -- Define a Product type
 type alias Product =
@@ -15,7 +15,10 @@ type alias Product =
     , colors : List ColorOption
     , selectedColor : ColorOption
     , showInsideView : Bool
+    , isValuePack : Bool  
+    , description : String 
     }
+
 
 -- Define a ColorOption type
 type alias ColorOption =
@@ -48,13 +51,15 @@ colorOptionDecoder =
 
 productDecoder : Decoder Product
 productDecoder =
-    Json.Decode.map6 Product
+    Json.Decode.map8 Product
         (field "id" int)
         (field "name" string)
         (field "price" string)
         (field "colors" (list colorOptionDecoder))
-        (Json.Decode.succeed { colorCode = "#FFFFFF", outsideImageUrl = "", insideImageUrl = "" }) -- Default color
+        (Json.Decode.succeed { colorCode = "#FFFFFF", outsideImageUrl = "", insideImageUrl = "" }) -- Default selected color
         (Json.Decode.succeed False) -- Default showInsideView
+        (field "isValuePack" (maybe bool) |> Json.Decode.map (Maybe.withDefault False)) -- Default False
+        (field "description" (maybe string) |> Json.Decode.map (Maybe.withDefault ""))
 
 productsDecoder : Decoder (List Product)
 productsDecoder =
@@ -181,9 +186,12 @@ viewProduct product =
         [ -- Product Image
           img [ src selectedImage, class "product-image" ] []
 
-        -- "Show Inside" Button (Visible Only on Hover)
-        , div [ class "view-inside-button", onClick (ToggleInsideView product.id) ]
-            [ text (if product.showInsideView then "Close X" else "+ Show Inside") ]
+        -- "Value Pack" Button OR "Show Inside" Button (Appears on Hover)
+        , if product.isValuePack then
+            div [ class "value-pack-button" ] [ text "Value Pack" ]
+          else
+            div [ class "view-inside-button", onClick (ToggleInsideView product.id) ]
+                [ text (if product.showInsideView then "Close X" else "+ Show Inside") ]
 
         -- Product Name & Price
         , div [ class "product-info" ]
@@ -202,6 +210,9 @@ viewProduct product =
                     ]
                     []
             ) product.colors)
+
+        -- Small Description (Below Color Options)
+        , div [ class "product-description" ] [ text product.description ]
         ]
 
 
