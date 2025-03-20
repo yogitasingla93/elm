@@ -1,3 +1,6 @@
+/* ======================== */
+/* GENERAL STYLES */
+/* ======================== */
 .carousel-container {
     display: flex;
     gap: 0.5rem;
@@ -8,27 +11,10 @@
                  ui-sans-serif, system-ui, sans-serif, 
                  "Apple Color Emoji", "Segoe UI Emoji", 
                  "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-.product-image {
-    width: 95%;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-  
-
-.product-card:hover .view-inside-button {
-    opacity: 1;
-}
-
-.carousel-container {
-    display: flex;
-    align-items: center;
     position: relative;
-    /*width: 90%;*/
+    align-items: center;
     justify-content: space-around;
     margin: 0 auto;
-
 }
 
 .carousel-track {
@@ -39,8 +25,30 @@
     justify-content: space-around;
 }
 
+/* ======================== */
+/* PRODUCT CARDS */
+/* ======================== */
+.product-card {
+    width: 32%;
+    text-align: center;
+    position: relative;
+    padding: 10px;
+    background: #f7f7f7;
+}
+
+.product-card img {
+    width: 95%;
+    object-fit: contain;
+    border-radius: 8px;
+    aspect-ratio: 4 / 3;
+}
+
+/* ======================== */
+/* NAVIGATION ARROWS */
+/* ======================== */
 .arrow {
-    background: inherit;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Slight blur effect */
     color: #666666;
     border: none;
     padding: 10px 15px;
@@ -51,70 +59,20 @@
     top: 50%;
     transform: translateY(-50%);
     transition: background 0.3s ease;
-    z-index: 99;
+    z-index: 10;
 }
 
 .arrow.left-arrow {
-    left: -4%; 
+    left: clamp(-12%, -8%, -4%);
 }
 
 .arrow.right-arrow {
-    right: -4%; 
+    right: clamp(-12%, -8%, -4%);
 }
 
-  
-.product-card {
-    width: 32%;
-    text-align: center;
-    position: relative;
-    padding: 10px;
-    background: #f7f7f7;
-}
-
-.product-card img{
-    min-height: 72%;}
-
-.product-info{
-    text-align: left; 
-    padding: 0 10px;
-}
-
-
-.value-pack-button {
-    background: #e15a1d;
-    color: white;
-    font-size: 12px;
-    padding: 0.25rem 0.5rem;
-    border-radius: .375rem;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 5px;
-    width: 80px;
-}
-
-.view-inside-button {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    color: #333333;
-    background-color: rgb(219 219 219);
-    padding: 5px 10px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.product-card:hover .view-inside-button {
-    opacity: 1;
-}
-
-.product-description {
-    font-size: 12px;
-    color: #777;
-    margin-top: 5px;
-    text-align: left;
-}
-
+/* ======================== */
+/* COLOR OPTIONS */
+/* ======================== */
 .color-options {
     display: flex;
     justify-content: left;
@@ -125,42 +83,104 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 2px solid #ffffff;
-    outline: #ffffff;
+    border: 2px solid white; /* Default white outline */
+    outline: 2px solid white; /* White outline for all */
     cursor: pointer;
     display: inline-block;
     margin: 5px;
+    transition: border 0.3s ease, outline 0.3s ease;
 }
 
 .color-circle.active-color {
-    border: 1px solid black; 
-    outline-offset: -3px;
+    border: 2px solid black; /* Black border for selected color */
+    outline: 2px solid white; /* Keep white outline */
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3); /* Slight shadow for better visibility */
+}
+
+/* ======================== */
+/* VIEW INSIDE BUTTON */
+/* ======================== */
+.view-inside-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: #333333;
+    background-color: rgba(219, 219, 219, 0.8); 
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: 0;
+    text-transform: uppercase;
+    font-size: .7857142857142857rem;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .view-inside-button {
+    opacity: 1;
+}
+
+/* ======================== */
+/* VALUE PACK BUTTON */
+/* ======================== */
+.value-pack-button {
+    background: #e15a1d;
+    color: white;
+    font-size: 12px;
+    padding: 0.25rem 0.5rem;
+    border-radius: .375rem;
+    text-align: center;
+    font-weight: bold;
+    margin: 6px 0 15px 0;
+    width: 80px;
+}
+
+/* ======================== */
+/* PRODUCT INFO & DESCRIPTION */
+/* ======================== */
+.product-info {
+    text-align: left; 
+    padding: 0 10px;
+    font-size: .9285714285714286rem;
 }
 
 .valued-at {
-    font-size: 12px;
+    font-size: 13px;
     color: #666666;
-    margin-left: 5px;
+    margin-left: 15px;
 }
+
+.product-description {
+    font-size: .8571428571428571rem;
+    color: #777;
+    margin-top: 5px;
+    text-align: left;
+}
+
+/* ======================== */
+/* RESPONSIVE STYLES */
+/* ======================== */
+
+/* Mobile: Show 1.5 Products */
 @media screen and (max-width: 600px) {
-.carousel-track {
-    width: 90%;
+    .carousel-track {
+        width: 90%;
+    }
+
+    .product-card {
+        flex: 0 0 calc(100% / 1.5); /* Show 1.5 items */
+        min-width: calc(100% / 1.5);
+    }
+
+    .arrow.left-arrow {
+        left: -12%; 
+    }
+
+    .arrow.right-arrow {
+        right: -12%; 
+    }
 }
 
-.product-card {
-    flex: 0 0 66.66%; 
-    min-width: 66.66%;
-}
-.arrow.left-arrow {
-    left: -12%; 
-}
-
-.arrow.right-arrow {
-    right: -12%; 
-}
-
-}
-
+/* Medium Screens: Adjust Arrow Placement */
 @media screen and (max-width: 1400px) {
     .arrow.left-arrow {
         left: -8%; 

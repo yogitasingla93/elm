@@ -116,7 +116,7 @@
       "colors": [
         {
           "colorCode": "#B0A999",
-          "outsideImageUrl": "/assets/images/0.avif",
+          "outsideImageUrl": "/assets/images/p1-21.avif",
           "insideImageUrl": "/assets/images/1.avif"
         },
         {
@@ -137,7 +137,7 @@
         {
           "colorCode": "#A8B8B2",
           "outsideImageUrl": "/assets/images/7.avif",
-          "insideImageUrl": "/assets/images/0.avif"
+          "insideImageUrl": "/assets/images/p1-21.avif"
         },
         {
           "colorCode": "#775544",
@@ -266,13 +266,13 @@
         "colors": [
           {
             "colorCode": "#B0A999",
-            "outsideImageUrl": "/assets/images/0.avif",
-            "insideImageUrl": "/assets/images/0.avif"
+            "outsideImageUrl": "/assets/images/p1-21.avif",
+            "insideImageUrl": "/assets/images/p1-21.avif"
           },
           {
             "colorCode": "#445566",
-            "outsideImageUrl": "/assets/images/0.avif",
-            "insideImageUrl": "/assets/images/0.avif"
+            "outsideImageUrl": "/assets/images/p1-21.avif",
+            "insideImageUrl": "/assets/images/p1-21.avif"
           }
         ],
         "isValuePack": true,
@@ -286,7 +286,7 @@
         "colors": [
           {
             "colorCode": "#A8B8B2",
-            "outsideImageUrl": "/assets/images/7.avif",
+            "outsideImageUrl": "/assets/images/p1-21.avif",
             "insideImageUrl": "/assets/images/01.avif"
           },
           {

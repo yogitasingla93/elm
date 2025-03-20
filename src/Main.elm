@@ -162,7 +162,7 @@ update msg model =
                         0  -- Loop back to first product
             in
             ( { model | currentIndex = nextIndex }, Cmd.none )
-            
+
 
 view : Model -> Html Msg
 view model =
@@ -209,7 +209,7 @@ viewProduct product =
             div [ class "value-pack-button" ] [ text "Value Pack" ]
           else
             div [ class "view-inside-button", onClick (ToggleInsideView product.id) ]
-                [ text (if product.showInsideView then "Close X" else "+ Show Inside") ]
+                [ text (if product.showInsideView then "Close X" else "Show Inside +") ]
 
         -- Product Name & Price
         , div [ class "product-info" ]

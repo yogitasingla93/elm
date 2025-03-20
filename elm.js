@@ -6520,7 +6520,7 @@ var $author$project$Main$viewProduct = function (product) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
-						product.showInsideView ? 'Close X' : '+ Show Inside')
+						product.showInsideView ? 'Close X' : 'Show Inside +')
 					])),
 				A2(
 				$elm$html$Html$div,
