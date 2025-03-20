@@ -6125,10 +6125,11 @@ var $elm$http$Http$get = function (r) {
 		{body: $elm$http$Http$emptyBody, expect: r.expect, headers: _List_Nil, method: 'GET', timeout: $elm$core$Maybe$Nothing, tracker: $elm$core$Maybe$Nothing, url: r.url});
 };
 var $elm$json$Json$Decode$list = _Json_decodeList;
-var $author$project$Main$Product = F8(
-	function (id, name, price, colors, selectedColor, showInsideView, isValuePack, description) {
-		return {colors: colors, description: description, id: id, isValuePack: isValuePack, name: name, price: price, selectedColor: selectedColor, showInsideView: showInsideView};
+var $author$project$Main$Product = F9(
+	function (id, name, price, colors, selectedColor, showInsideView, isValuePack, description, valuedAt) {
+		return {colors: colors, description: description, id: id, isValuePack: isValuePack, name: name, price: price, selectedColor: selectedColor, showInsideView: showInsideView, valuedAt: valuedAt};
 	});
+var $elm$json$Json$Decode$andThen = _Json_andThen;
 var $elm$json$Json$Decode$bool = _Json_decodeBool;
 var $author$project$Main$ColorOption = F3(
 	function (colorCode, outsideImageUrl, insideImageUrl) {
@@ -6154,42 +6155,37 @@ var $elm$json$Json$Decode$maybe = function (decoder) {
 				$elm$json$Json$Decode$succeed($elm$core$Maybe$Nothing)
 			]));
 };
-var $elm$core$Maybe$withDefault = F2(
-	function (_default, maybe) {
-		if (maybe.$ === 'Just') {
-			var value = maybe.a;
-			return value;
-		} else {
-			return _default;
-		}
-	});
-var $author$project$Main$productDecoder = A9(
-	$elm$json$Json$Decode$map8,
-	$author$project$Main$Product,
-	A2($elm$json$Json$Decode$field, 'id', $elm$json$Json$Decode$int),
-	A2($elm$json$Json$Decode$field, 'name', $elm$json$Json$Decode$string),
-	A2($elm$json$Json$Decode$field, 'price', $elm$json$Json$Decode$string),
-	A2(
-		$elm$json$Json$Decode$field,
-		'colors',
-		$elm$json$Json$Decode$list($author$project$Main$colorOptionDecoder)),
-	$elm$json$Json$Decode$succeed(
-		{colorCode: '#FFFFFF', insideImageUrl: '', outsideImageUrl: ''}),
-	$elm$json$Json$Decode$succeed(false),
-	A2(
-		$elm$json$Json$Decode$map,
-		$elm$core$Maybe$withDefault(false),
+var $author$project$Main$productDecoder = A2(
+	$elm$json$Json$Decode$andThen,
+	function (decodeFunc) {
+		return A2(
+			$elm$json$Json$Decode$map,
+			decodeFunc,
+			A2(
+				$elm$json$Json$Decode$field,
+				'valuedAt',
+				$elm$json$Json$Decode$maybe($elm$json$Json$Decode$string)));
+	},
+	A9(
+		$elm$json$Json$Decode$map8,
+		F8(
+			function (id, name, price, colors, selectedColor, showInside, isValuePack, description) {
+				return function (valuedAt) {
+					return A9($author$project$Main$Product, id, name, price, colors, selectedColor, showInside, isValuePack, description, valuedAt);
+				};
+			}),
+		A2($elm$json$Json$Decode$field, 'id', $elm$json$Json$Decode$int),
+		A2($elm$json$Json$Decode$field, 'name', $elm$json$Json$Decode$string),
+		A2($elm$json$Json$Decode$field, 'price', $elm$json$Json$Decode$string),
 		A2(
 			$elm$json$Json$Decode$field,
-			'isValuePack',
-			$elm$json$Json$Decode$maybe($elm$json$Json$Decode$bool))),
-	A2(
-		$elm$json$Json$Decode$map,
-		$elm$core$Maybe$withDefault(''),
-		A2(
-			$elm$json$Json$Decode$field,
-			'description',
-			$elm$json$Json$Decode$maybe($elm$json$Json$Decode$string))));
+			'colors',
+			$elm$json$Json$Decode$list($author$project$Main$colorOptionDecoder)),
+		$elm$json$Json$Decode$succeed(
+			{colorCode: '#FFFFFF', insideImageUrl: '', outsideImageUrl: ''}),
+		$elm$json$Json$Decode$succeed(false),
+		A2($elm$json$Json$Decode$field, 'isValuePack', $elm$json$Json$Decode$bool),
+		A2($elm$json$Json$Decode$field, 'description', $elm$json$Json$Decode$string)));
 var $author$project$Main$productsDecoder = $elm$json$Json$Decode$list($author$project$Main$productDecoder);
 var $author$project$Main$fetchProducts = $elm$http$Http$get(
 	{
@@ -6323,6 +6319,7 @@ var $elm$core$List$drop = F2(
 			}
 		}
 	});
+var $elm$core$Basics$ge = _Utils_ge;
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
 };
@@ -6476,6 +6473,7 @@ var $author$project$Main$ToggleInsideView = function (a) {
 	return {$: 'ToggleInsideView', a: a};
 };
 var $elm$html$Html$img = _VirtualDom_node('img');
+var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$html$Html$Attributes$src = function (url) {
 	return A2(
 		$elm$html$Html$Attributes$stringProperty,
@@ -6544,10 +6542,28 @@ var $author$project$Main$viewProduct = function (product) {
 						_List_Nil,
 						_List_fromArray(
 							[
-								$elm$html$Html$text(product.price)
+								$elm$html$Html$text(product.price),
+								function () {
+								var _v0 = product.valuedAt;
+								if (_v0.$ === 'Just') {
+									var val = _v0.a;
+									return A2(
+										$elm$html$Html$span,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('valued-at')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text('Valued at ' + val)
+											]));
+								} else {
+									return $elm$html$Html$text('');
+								}
+							}()
 							]))
 					])),
-				A2(
+				(!product.isValuePack) ? A2(
 				$elm$html$Html$div,
 				_List_fromArray(
 					[
@@ -6569,7 +6585,7 @@ var $author$project$Main$viewProduct = function (product) {
 								]),
 							_List_Nil);
 					},
-					product.colors)),
+					product.colors)) : $elm$html$Html$text(''),
 				A2(
 				$elm$html$Html$div,
 				_List_fromArray(
@@ -6583,6 +6599,8 @@ var $author$project$Main$viewProduct = function (product) {
 			]));
 };
 var $author$project$Main$view = function (model) {
+	var totalProducts = $elm$core$List$length(model.products);
+	var isLastSet = _Utils_cmp(model.currentIndex, totalProducts - 3) > -1;
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -6591,7 +6609,7 @@ var $author$project$Main$view = function (model) {
 			]),
 		_List_fromArray(
 			[
-				A2(
+				(model.currentIndex > 0) ? A2(
 				$elm$html$Html$button,
 				_List_fromArray(
 					[
@@ -6601,7 +6619,7 @@ var $author$project$Main$view = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text('<')
-					])),
+					])) : $elm$html$Html$text(''),
 				A2(
 				$elm$html$Html$div,
 				_List_fromArray(
@@ -6615,7 +6633,7 @@ var $author$project$Main$view = function (model) {
 						$elm$core$List$take,
 						3,
 						A2($elm$core$List$drop, model.currentIndex, model.products)))),
-				A2(
+				(!isLastSet) ? A2(
 				$elm$html$Html$button,
 				_List_fromArray(
 					[
@@ -6625,7 +6643,7 @@ var $author$project$Main$view = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text('>')
-					]))
+					])) : $elm$html$Html$text('')
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(

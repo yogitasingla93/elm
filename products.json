@@ -1,18 +1,168 @@
 [
-  {
+    {
       "id": 1,
       "name": "Venture Sling 6L",
       "price": "$129",
       "colors": [
+        {
+          "colorCode": "#363636",
+          "outsideImageUrl": "/assets/images/p1-00.avif",
+          "insideImageUrl": "/assets/images/p1-01.avif"
+        },
+        {
+          "colorCode": "#212e41",
+          "outsideImageUrl": "/assets/images/p1-10.avif",
+          "insideImageUrl": "/assets/images/p1-11.avif"
+        },
+        {
+          "colorCode": "#6c7f4d",
+          "outsideImageUrl": "/assets/images/p1-20.avif",
+          "insideImageUrl": "/assets/images/p1-21.avif"
+        },
+        {
+          "colorCode": "#b45628",
+          "outsideImageUrl": "/assets/images/p1-30.avif",
+          "insideImageUrl": "/assets/images/p1-31.avif"
+        }
+      ],
+      "isValuePack": false,
+      "description": "6L / An organized sling that's ready for adventure",
+      "valuedAt": null
+    },
+    {
+        "id": 2,
+        "name": "Tech Kit",
+        "price": "$59",
+        "colors": [
           {
-              "colorCode": "#363636",
-              "outsideImageUrl": "/assets/images/p1-00.avif",
-              "insideImageUrl": "/assets/images/p1-01.avif"
+            "colorCode": "#363636",
+            "outsideImageUrl": "/assets/images/p2-00.avif",
+            "insideImageUrl": "/assets/images/p2-01.avif"
           },
           {
-              "colorCode": "#212e41",
-              "outsideImageUrl": "/assets/images/p1-10.avif",
-              "insideImageUrl": "/assets/images/p1-11.avif"
+            "colorCode": "#b45628",
+            "outsideImageUrl": "/assets/images/p2-40.avif",
+            "insideImageUrl": "/assets/images/p2-41.avif"
+          },
+          {
+            "colorCode": "#6c7f4d",
+            "outsideImageUrl": "/assets/images/p2-20.avif",
+            "insideImageUrl": "/assets/images/p2-21.avif"
+          },
+          {
+            "colorCode": "#9fa8a3",
+            "outsideImageUrl": "/assets/images/p2-30.avif",
+            "insideImageUrl": "/assets/images/p2-31.avif"
+          }
+        ],
+        "isValuePack": false,
+        "description": "Charger, mouse, powerbank, dongles, cables, earbuds",
+        "valuedAt": null
+      },
+    {
+      "id": 3,
+      "name": "Pack Well Travel Set",
+      "price": "$79",
+      "colors": [
+        {
+          "colorCode": "",
+          "outsideImageUrl": "/assets/images/bellroy-pack-well-travel-set.avif",
+          "insideImageUrl": "/assets/images/p2.avif"
+        }
+      ],
+      "isValuePack": true,
+      "description": "Tech Kit + Lite Pouch Duo",
+      "valuedAt": "$98"
+    },
+    {
+        "id": 4,
+        "name": "Toiletry Kit Plus",
+        "price": "$69",
+        "colors": [
+          {
+            "colorCode": "#212e41",
+            "outsideImageUrl": "/assets/images/p3-00.avif",
+            "insideImageUrl": "/assets/images/p3-01.avif"
+          },
+          {
+            "colorCode": "#363636",
+            "outsideImageUrl": "/assets/images/p3-10.avif",
+            "insideImageUrl": "/assets/images/p3-11.avif"
+          },
+          {
+            "colorCode": "#b45628",
+            "outsideImageUrl": "/assets/images/p3-20.avif",
+            "insideImageUrl": "/assets/images/p3-21.avif"
+          },
+          {
+            "colorCode": "#904939",
+            "outsideImageUrl": "/assets/images/p3-30.avif",
+            "insideImageUrl": "/assets/images/p3-31.avif"
+          },
+          {
+            "colorCode": "#000000",
+            "outsideImageUrl": "/assets/images/p3-40.avif",
+            "insideImageUrl": "/assets/images/p3-41.avif"
+          }
+        ],
+        "isValuePack": false,
+        "description": "Large toiletries, electric toothbrush, deodorant and more",
+        "valuedAt": null
+      },
+    {
+      "id": 5,
+      "name": "Lite Sling",
+      "price": "$89",
+      "colors": [
+        {
+          "colorCode": "#B0A999",
+          "outsideImageUrl": "/assets/images/0.avif",
+          "insideImageUrl": "/assets/images/1.avif"
+        },
+        {
+          "colorCode": "#445566",
+          "outsideImageUrl": "/assets/images/0-1.avif",
+          "insideImageUrl": "/assets/images/5.avif"
+        }
+      ],
+      "isValuePack": true,
+      "description": "Premium quality and designed for convenience. Perfect for travel!",
+      "valuedAt": "$119"
+    },
+    {
+      "id": 6,
+      "name": "Market Tote",
+      "price": "$39",
+      "colors": [
+        {
+          "colorCode": "#A8B8B2",
+          "outsideImageUrl": "/assets/images/7.avif",
+          "insideImageUrl": "/assets/images/0.avif"
+        },
+        {
+          "colorCode": "#775544",
+          "outsideImageUrl": "/assets/images/7.avif",
+          "insideImageUrl": "/assets/images/01.avif"
+        }
+      ],
+      "isValuePack": true,
+      "description": "Premium quality and designed for convenience. Perfect for travel!",
+      "valuedAt": "$59"
+    },    
+    {
+        "id": 7,
+        "name": " Sling 6L",
+        "price": "$129",
+        "colors": [
+          {
+            "colorCode": "#363636",
+            "outsideImageUrl": "/assets/images/p1-00.avif",
+            "insideImageUrl": "/assets/images/p1-01.avif"
+          },
+          {
+            "colorCode": "#212e41",
+            "outsideImageUrl": "/assets/images/p1-10.avif",
+            "insideImageUrl": "/assets/images/p1-11.avif"
           },
           {
             "colorCode": "#6c7f4d",
@@ -24,184 +174,129 @@
             "outsideImageUrl": "/assets/images/p1-30.avif",
             "insideImageUrl": "/assets/images/p1-31.avif"
           }
-      ],
-      "isValuePack": false,
-      "description": "6L / An organized sling that's ready for adventure"
-  },
-  {
-      "id": 2,
-      "name": "Tech Kit",
-      "price": "$59",
-      "colors": [
-          {
-              "colorCode": "#000000",
-              "outsideImageUrl": "/assets/images/0.avif",
-              "insideImageUrl": "/assets/images/0-1.avif"
-          },
-          {
-              "colorCode": "#5b5b58",
-              "outsideImageUrl": "/assets/images/1.avif",
-              "insideImageUrl": "/assets/images/1-1.avif"
-          },
-          {
-              "colorCode": "#212e41",
-              "outsideImageUrl": "/assets/images/2.avif",
-              "insideImageUrl": "/assets/images/3-1.avif"
-          },
-          {
-              "colorCode": "#a8b8b2",
-              "outsideImageUrl": "/assets/images/4.avif",
-              "insideImageUrl": "/assets/images/4-1.avif"
-          }
-      ],
-      "isValuePack": false,
-      "description": "Charger, mouse, powerbank, dongles, cables, earbuds"
-  },
-  {
-      "id": 3,
-      "name": "Toiletry Kit Plus",
-      "price": "$69",
-      "colors": [
-          {
-              "colorCode": "",
-              "outsideImageUrl": "/assets/images/p2.avif",
-              "insideImageUrl": "/assets/images/p2.avif"
-          }
-      ],
-      "isValuePack": true,
-      "description": "Tech Kit + Lite Pouch Duo"
-  },
-  {
-      "id": 4,
-      "name": "Lite Sling",
-      "price": "$89",
-      "colors": [
-          {
-              "colorCode": "#B0A999",
-              "outsideImageUrl": "/assets/images/0.avif",
-              "insideImageUrl": "/assets/images/0.avif"
-          },
-          {
-              "colorCode": "#445566",
-              "outsideImageUrl": "/assets/images/0.avif",
-              "insideImageUrl": "/assets/images/0.avif"
-          }
-      ],
-      "isValuePack": true,
-      "description": "Premium quality and designed for convenience. Perfect for travel!"
-  },
-  {
-      "id": 5,
-      "name": "Classic Backpack",
-      "price": "$139",
-      "colors": [
-          {
-              "colorCode": "#2E2E2E",
-              "outsideImageUrl": "/assets/images/0.avif",
-              "insideImageUrl": "/assets/images/0.avif"
-          },
-          {
-              "colorCode": "#775544",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example5_brown_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example5_brown_inside.jpg"
-          }
-      ],
-      "isValuePack": false,
-      "description": "Premium quality and designed for convenience. Perfect for travel!"
-  },
-  {
-      "id": 6,
-      "name": "Transit Workpack",
-      "price": "$149",
-      "colors": [
-          {
-              "colorCode": "#445566",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example6_blue_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example6_blue_inside.jpg"
-          },
-          {
-              "colorCode": "#CCCCCC",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example6_gray_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example6_gray_inside.jpg"
-          }
-      ],
-      "isValuePack": false,
-      "description": "Premium quality and designed for convenience. Perfect for travel!"
-  },
-  {
-      "id": 7,
-      "name": "Market Tote",
-      "price": "$39",
-      "colors": [
-          {
-              "colorCode": "#A8B8B2",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example7_green_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example7_green_inside.jpg"
-          },
-          {
-              "colorCode": "#775544",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example7_brown_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example7_brown_inside.jpg"
-          }
-      ],
-      "isValuePack": true,
-      "description": "Premium quality and designed for convenience. Perfect for travel!"
-  },
-  {
-      "id": 8,
-      "name": "Card Sleeve Wallet",
-      "price": "$55",
-      "colors": [
-          {
+        ],
+        "isValuePack": false,
+        "description": "6L / An organized sling that's ready for adventure",
+        "valuedAt": null
+      },
+      {
+          "id": 8,
+          "name": "Tech 2 Kit",
+          "price": "$59",
+          "colors": [
+            {
               "colorCode": "#363636",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example8_black_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example8_black_inside.jpg"
+              "outsideImageUrl": "/assets/images/p2-00.avif",
+              "insideImageUrl": "/assets/images/p2-01.avif"
+            },
+            {
+              "colorCode": "#b45628",
+              "outsideImageUrl": "/assets/images/p2-40.avif",
+              "insideImageUrl": "/assets/images/p2-41.avif"
+            },
+            {
+              "colorCode": "#6c7f4d",
+              "outsideImageUrl": "/assets/images/p2-20.avif",
+              "insideImageUrl": "/assets/images/p2-21.avif"
+            },
+            {
+              "colorCode": "#9fa8a3",
+              "outsideImageUrl": "/assets/images/p2-30.avif",
+              "insideImageUrl": "/assets/images/p2-31.avif"
+            }
+          ],
+          "isValuePack": false,
+          "description": "Charger, mouse, powerbank, dongles, cables, earbuds",
+          "valuedAt": null
+        },
+      {
+        "id": 9,
+        "name": "Pack Travel Set",
+        "price": "$79",
+        "colors": [
+          {
+            "colorCode": "",
+            "outsideImageUrl": "/assets/images/bellroy-pack-well-travel-set.avif",
+            "insideImageUrl": "/assets/images/p2.avif"
+          }
+        ],
+        "isValuePack": true,
+        "description": "Tech Kit + Lite Pouch Duo",
+        "valuedAt": "$98"
+      },
+      {
+          "id": 10,
+          "name": "Toiletry Kit",
+          "price": "$69",
+          "colors": [
+            {
+              "colorCode": "#212e41",
+              "outsideImageUrl": "/assets/images/p3-00.avif",
+              "insideImageUrl": "/assets/images/p3-01.avif"
+            },
+            {
+              "colorCode": "#363636",
+              "outsideImageUrl": "/assets/images/p3-10.avif",
+              "insideImageUrl": "/assets/images/p3-11.avif"
+            },
+            {
+              "colorCode": "#b45628",
+              "outsideImageUrl": "/assets/images/p3-20.avif",
+              "insideImageUrl": "/assets/images/p3-21.avif"
+            },
+            {
+              "colorCode": "#904939",
+              "outsideImageUrl": "/assets/images/p3-30.avif",
+              "insideImageUrl": "/assets/images/p3-31.avif"
+            },
+            {
+              "colorCode": "#000000",
+              "outsideImageUrl": "/assets/images/p3-40.avif",
+              "insideImageUrl": "/assets/images/p3-41.avif"
+            }
+          ],
+          "isValuePack": false,
+          "description": "Large toiletries, electric toothbrush, deodorant and more",
+          "valuedAt": null
+        },
+      {
+        "id": 11,
+        "name": "Lite Sling",
+        "price": "$89",
+        "colors": [
+          {
+            "colorCode": "#B0A999",
+            "outsideImageUrl": "/assets/images/0.avif",
+            "insideImageUrl": "/assets/images/0.avif"
           },
           {
-              "colorCode": "#B45628",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example8_bronze_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example8_bronze_inside.jpg"
+            "colorCode": "#445566",
+            "outsideImageUrl": "/assets/images/0.avif",
+            "insideImageUrl": "/assets/images/0.avif"
           }
-      ],
-      "isValuePack": false,
-      "description": "Premium quality and designed for convenience. Perfect for travel!"
-  },
-  {
-      "id": 9,
-      "name": "Apex Passport Cover",
-      "price": "$159",
-      "colors": [
+        ],
+        "isValuePack": true,
+        "description": "Premium quality and designed for convenience. Perfect for travel!",
+        "valuedAt": "$119"
+      },
+      {
+        "id": 12,
+        "name": "Market Tote",
+        "price": "$39",
+        "colors": [
           {
-              "colorCode": "#2E2E2E",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example9_black_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example9_black_inside.jpg"
+            "colorCode": "#A8B8B2",
+            "outsideImageUrl": "/assets/images/7.avif",
+            "insideImageUrl": "/assets/images/01.avif"
           },
           {
-              "colorCode": "#CCCCCC",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example9_gray_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example9_gray_inside.jpg"
+            "colorCode": "#775544",
+            "outsideImageUrl": "/assets/images/20.avif",
+            "insideImageUrl": "/assets/images/21.avif"
           }
-      ],
-      "isValuePack": false,
-      "description": "Premium quality and designed for convenience. Perfect for travel!"
-  },
-  {
-      "id": 10,
-      "name": "Travel Pouch",
-      "price": "$79",
-      "colors": [
-          {
-              "colorCode": "#445566",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example10_blue_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example10_blue_inside.jpg"
-          },
-          {
-              "colorCode": "#775544",
-              "outsideImageUrl": "https://bellroy-product-images.imgix.net/example10_brown_outside.jpg",
-              "insideImageUrl": "https://bellroy-product-images.imgix.net/example10_brown_inside.jpg"
-          }
-      ],
-      "isValuePack": true,
-      "description": "Premium quality and designed for convenience. Perfect for travel!"
-  }
+        ],
+        "isValuePack": true,
+        "description": "Premium quality and designed for convenience. Perfect for travel!",
+        "valuedAt": "$59"
+      }
 ]

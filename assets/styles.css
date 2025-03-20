@@ -1,38 +1,31 @@
 .carousel-container {
     display: flex;
-    gap: 10px;
-    overflow-x: auto;
+    gap: 0.5rem;
     white-space: nowrap;
+    max-width: 80%;
+    font-family: GTUltra, Lato, Noto Sans, Noto Sans JP, 
+                 Noto Sans KR, Noto Sans SC, Noto Sans TC, 
+                 ui-sans-serif, system-ui, sans-serif, 
+                 "Apple Color Emoji", "Segoe UI Emoji", 
+                 "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .product-image {
     width: 95%;
-    object-fit: contain; /* Ensures full image visibility */
+    object-fit: contain;
     border-radius: 8px;
   }
   
-  .view-inside-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-    opacity: 0;  /* Initially hidden */
-}
 
 .product-card:hover .view-inside-button {
-    opacity: 1;  /* Show only on hover */
+    opacity: 1;
 }
 
 .carousel-container {
     display: flex;
     align-items: center;
     position: relative;
-    width: 90%;
+    /*width: 90%;*/
     justify-content: space-around;
     margin: 0 auto;
 
@@ -47,8 +40,8 @@
 }
 
 .arrow {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    background: inherit;
+    color: #666666;
     border: none;
     padding: 10px 15px;
     font-size: 18px;
@@ -62,71 +55,50 @@
 }
 
 .arrow.left-arrow {
-    left: 0; /* Moves left arrow outside the product area */
+    left: -4%; 
 }
 
 .arrow.right-arrow {
-    right: 0; /* Moves right arrow outside the product area */
+    right: -4%; 
 }
 
-.arrow:hover {
-    background: rgba(0, 0, 0, 0.9);
-}
-
-  
-  .view-inside-button:hover {
-    background: grey;
-  }
   
 .product-card {
     width: 32%;
     text-align: center;
     position: relative;
     padding: 10px;
-    border-radius: 8px;
-}
-/*
-.product-image {
-    width: 100%;
-    transition: opacity 0.3s ease;
-    border-radius: 5px;
+    background: #f7f7f7;
 }
 
-.view-inside-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: none;
-    cursor: pointer;
+.product-card img{
+    min-height: 72%;}
+
+.product-info{
+    text-align: left; 
+    padding: 0 10px;
 }
 
-.product-card:hover .view-inside-button {
-    display: block;
-}*/
 
 .value-pack-button {
-    background: orange;
+    background: #e15a1d;
     color: white;
     font-size: 12px;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
+    border-radius: .375rem;
     text-align: center;
     font-weight: bold;
     margin-bottom: 5px;
+    width: 80px;
 }
 
 .view-inside-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    top: 0px;
+    right: 0px;
+    color: #333333;
+    background-color: rgb(219 219 219);
     padding: 5px 10px;
-    border-radius: 5px;
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -140,24 +112,61 @@
     font-size: 12px;
     color: #777;
     margin-top: 5px;
+    text-align: left;
 }
 
 .color-options {
     display: flex;
-    justify-content: center;
-    margin-top: 10px;
+    justify-content: left;
+    margin: 10px;
 }
 
 .color-circle {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 2px solid transparent;
+    border: 2px solid #ffffff;
+    outline: #ffffff;
     cursor: pointer;
     display: inline-block;
     margin: 5px;
 }
 
 .color-circle.active-color {
-    border: 2px solid black; /* Make selected color stand out */
+    border: 1px solid black; 
+    outline-offset: -3px;
+}
+
+.valued-at {
+    font-size: 12px;
+    color: #666666;
+    margin-left: 5px;
+}
+@media screen and (max-width: 600px) {
+.carousel-track {
+    width: 90%;
+}
+
+.product-card {
+    flex: 0 0 66.66%; 
+    min-width: 66.66%;
+}
+.arrow.left-arrow {
+    left: -12%; 
+}
+
+.arrow.right-arrow {
+    right: -12%; 
+}
+
+}
+
+@media screen and (max-width: 1400px) {
+    .arrow.left-arrow {
+        left: -8%; 
+    }
+    
+    .arrow.right-arrow {
+        right: -8%; 
+    }  
 }

@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, div, img, button, text)
+import Html exposing (Html, div, img, button, text, span)
 import Html.Attributes exposing (src, class, style)
 import Html.Events exposing (onClick)
 import Http
@@ -15,8 +15,9 @@ type alias Product =
     , colors : List ColorOption
     , selectedColor : ColorOption
     , showInsideView : Bool
-    , isValuePack : Bool  
-    , description : String 
+    , isValuePack : Bool
+    , description : String
+    , valuedAt : Maybe String 
     }
 
 
@@ -51,15 +52,23 @@ colorOptionDecoder =
 
 productDecoder : Decoder Product
 productDecoder =
-    Json.Decode.map8 Product
+    Json.Decode.map8 (\id name price colors selectedColor showInside isValuePack description ->
+        \valuedAt -> Product id name price colors selectedColor showInside isValuePack description valuedAt
+    )
         (field "id" int)
         (field "name" string)
         (field "price" string)
         (field "colors" (list colorOptionDecoder))
         (Json.Decode.succeed { colorCode = "#FFFFFF", outsideImageUrl = "", insideImageUrl = "" }) -- Default selected color
         (Json.Decode.succeed False) -- Default showInsideView
-        (field "isValuePack" (maybe bool) |> Json.Decode.map (Maybe.withDefault False)) -- Default False
-        (field "description" (maybe string) |> Json.Decode.map (Maybe.withDefault ""))
+        (field "isValuePack" bool)
+        (field "description" string)
+    |> Json.Decode.andThen (\decodeFunc ->
+        field "valuedAt" (maybe string)
+            |> Json.Decode.map decodeFunc
+    )
+
+
 
 productsDecoder : Decoder (List Product)
 productsDecoder =
@@ -153,13 +162,20 @@ update msg model =
                         0  -- Loop back to first product
             in
             ( { model | currentIndex = nextIndex }, Cmd.none )
-
+            
 
 view : Model -> Html Msg
 view model =
+    let
+        totalProducts = List.length model.products
+        isLastSet = model.currentIndex >= totalProducts - 3
+    in
     div [ class "carousel-container" ]
-        [ -- Left Arrow (Placed outside products)
-          button [ class "arrow left-arrow", onClick PreviousProduct ] [ text "<" ]
+        [ -- Left Arrow (Only Show If Not at the First Product)
+          if model.currentIndex > 0 then
+              button [ class "arrow left-arrow", onClick PreviousProduct ] [ text "<" ]
+          else
+              text ""  -- Hide the left arrow
 
         -- Display Three Products at a Time
         , div [ class "carousel-track" ]
@@ -167,10 +183,12 @@ view model =
                 |> List.map viewProduct
             )
 
-        -- Right Arrow (Placed outside products)
-        , button [ class "arrow right-arrow", onClick NextProduct ] [ text ">" ]
+        -- Right Arrow (Hide If Last 3 Products Are Showing)
+        , if not isLastSet then
+              button [ class "arrow right-arrow", onClick NextProduct ] [ text ">" ]
+          else
+              text ""  -- Hide the right arrow
         ]
-
 
 
 viewProduct : Product -> Html Msg
@@ -186,7 +204,7 @@ viewProduct product =
         [ -- Product Image
           img [ src selectedImage, class "product-image" ] []
 
-        -- "Value Pack" Button OR "Show Inside" Button (Appears on Hover)
+        -- "Value Pack" Label OR "Show Inside" Button
         , if product.isValuePack then
             div [ class "value-pack-button" ] [ text "Value Pack" ]
           else
@@ -196,24 +214,33 @@ viewProduct product =
         -- Product Name & Price
         , div [ class "product-info" ]
             [ div [] [ text product.name ]
-            , div [] [ text product.price ]
+            , div []
+                [ text product.price
+                , case product.valuedAt of
+                    Just val -> span [ class "valued-at" ] [ text ("Valued at " ++ val) ]  
+                    Nothing -> text ""
+                ]
             ]
 
-        -- Color Options (Highlight Selected)
-        , div [ class "color-options" ]
-            (List.map (\color ->
-                button
-                    [ class "color-circle"
-                    , style "background-color" color.colorCode
-                    , class (if color.colorCode == product.selectedColor.colorCode then "active-color" else "")
-                    , onClick (SelectColor product.id color)
-                    ]
-                    []
-            ) product.colors)
+        -- Color Options (Only if NOT a Value Pack)
+        , if not product.isValuePack then
+            div [ class "color-options" ]
+                (List.map (\color ->
+                    button
+                        [ class "color-circle"
+                        , style "background-color" color.colorCode
+                        , class (if color.colorCode == product.selectedColor.colorCode then "active-color" else "")
+                        , onClick (SelectColor product.id color)
+                        ]
+                        []
+                ) product.colors)
+          else
+            text ""
 
-        -- Small Description (Below Color Options)
+        -- Small Description (Below Price)
         , div [ class "product-description" ] [ text product.description ]
         ]
+
 
 
 -- Main
